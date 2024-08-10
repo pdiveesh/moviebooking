@@ -1,0 +1,213 @@
+/*responisve design not in bs*/
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* No horizontal scroll */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+/* Small devices (phones, portrait mode) */
+@media (max-width: 480px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 3rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        left: 8rem;
+        margin: 0;
+        padding: 0px; /* Adjust padding as needed */
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+        margin-left: -4rem
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+
+    /*main locations*/
+    .blk{
+        border: 1px solid black;
+        margin: 15px;
+    }
+    .loc-img{
+        height: 25rem;
+        width: 100%;
+
+    }
+    .locimg{
+        align-items: center;
+        margin-left:0;
+       
+    }
+    .loc-h{
+        font-size: 22px;
+        text-align: center;
+    }
+    .head{
+        text-align: center;
+        margin-top:10rem;
+        }
+}
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 6rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        top: 2rem;
+        left: 8rem;
+        margin: 0;
+        padding: 10px; /* Adjust padding as needed */
+        font-size: 1.5rem; /* Adjust font size as needed */
+        text-decoration: none;
+        color: #333;
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+
+    /*main locations*/
+    .blk{
+        border: 1px solid black;
+        margin: 15px;
+    }
+    .loc-img{
+        height: 25rem;
+        width: 100%;
+
+    }
+    .locimg{
+        align-items: center;
+        margin-right: 1.5rem;
+        margin-left: 0;
+       
+    }
+    .loc-h{
+        font-size: 22px;
+        text-align: center;
+    }
+    .head{
+        text-align: center;
+        margin-top:10rem;
+        }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 6rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        top: 2rem;
+        left: 8rem;
+        margin: 0;
+        padding: 10px; /* Adjust padding as needed */
+        font-size: 1.5rem; /* Adjust font size as needed */
+        text-decoration: none;
+        color: #333;
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+
+    /*main locations*/
+    .blk{
+        border: 1px solid black;
+        margin: 15px;
+        
+    }
+    .loc-img{
+        height: 25rem;
+        width: 100%;
+
+    }
+    .locimg{
+        align-items: center;
+        margin-left: 12rem;
+       
+    }
+    .loc-h{
+        font-size: 22px;
+        text-align: center;
+    }
+    .head{
+        text-align: center;
+        margin-top:10rem;
+        }
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1025px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 6rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        top: 2rem;
+        left: 8rem;
+        margin: 0;
+        padding: 10px; /* Adjust padding as needed */
+        font-size: 1.5rem; /* Adjust font size as needed */
+        text-decoration: none;
+        color: #333;
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+    
+
+    /*main locations*/
+    .blk{
+        border: 1px solid black;
+        margin: 15px;
+        height: 27rem;
+        margin-bottom: 2rem;
+    }
+    .loc-img{
+        height: 25rem;
+        width: 100%;
+
+    }
+    .locimg{
+        align-items: center;
+        margin-left: 15rem;
+       
+    }
+    .loc-h{
+        font-size: 22px;
+        text-align: center;
+    }
+    .head{
+        text-align: center;
+        margin-top:10rem;
+        }
+}

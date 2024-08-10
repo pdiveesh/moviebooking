@@ -16,14 +16,16 @@ document.querySelector('.login-form form').addEventListener('submit', function(e
         },
         body: JSON.stringify(user)
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
-        alert(data);
-        if (data.includes("Login successful")) {
-            // Redirect to the dashboard or home page after successful login
-            window.location.href = "./theatre.html";
+        if (data.success) { // Assuming your backend returns a success flag
+            localStorage.setItem('username', data.username); // Save username
+            window.location.href = "../screens/loc.html"; // Redirect to the post-login page
+        } else {
+            alert(data.message); // Show an error message
         }
     })
+    
     .catch(error => {
         console.error('Error:', error);
         alert('Failed to login.');

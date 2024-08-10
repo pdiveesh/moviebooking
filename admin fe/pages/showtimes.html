@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showtime Dashboard</title>
+    <link rel="stylesheet" href="../css/showtimestyles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="theatres.html">Theatres</a></li>
+                <li><a href="showtimes.html">Showtimes</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Showtimes</h1>
+            <form id="showtime-form">
+                <input type="hidden" id="showtime-id">
+                <label for="ticketPrice">Ticket Price:</label>
+                <input type="number" id="ticketPrice" required>
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" required>
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" required>
+                <label for="movieId">Movie ID:</label>
+                <input type="text" id="movieId" required>
+                <label for="theatreId">Theatre ID:</label>
+                <input type="text" id="theatreId" required>
+                <button type="submit">Add Showtime</button>
+            </form>
+            <h2>Existing Showtimes</h2>
+            <table id="showtime-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ticket Price</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Movie ID</th>
+                        <th>Theatre ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../js/showtimeScript.js"></script>
+</body>
+</html>

@@ -93,7 +93,7 @@ document.querySelector('#signup-form').addEventListener('submit', function(event
         alert('Failed to register user.');
     });
 });
-
+ 
 // Login
 document.querySelector('#login-form').addEventListener('submit', function(event) {
     event.preventDefault();

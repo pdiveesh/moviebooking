@@ -4,3 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.nav-link.name').innerText = `Hey, ${username}`;
     }
 });
+function setCity(city) {
+    localStorage.setItem('selectedCity', city);
+  }

@@ -26,10 +26,10 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="./main.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Hey,bro</a>
+              <a class="nav-link name" href="#">Hey,bro</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#"></a>
@@ -46,21 +46,20 @@
  <!---main -->
 
  <div class="container mt-5">
-    <div class="row">
-        <!-- First Half - Movie Info -->
-        <div class="col-md-6">
-            <img src="img/assest.png" class="img-fluid" alt="Movie Poster">
-        </div>
-        <div class="col-md-6">
-            <h1 class="movie-title">Movie Title</h1>
-            <p class="director"><strong>Director:</strong> Movie Director</p>
-            <p class="director"><strong>Language:</strong> Movie Director</p>
-             <p class="director"><strong>Genre:</strong> Movie Director</p>
-             <p class="director"><strong>Duration:</strong> Movie Director</p>
-            <p class="storyline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet accumsan orci. Cras maximus, orci non dictum fermentum, purus eros varius magna, nec posuere neque leo eu tortor. Aliquam a nibh ac neque consequat malesuada ut ut dui. Fusce sed metus non velit laoreet tincidunt.</p>
-        </div>
-    </div>
-
+  <div class="row">
+      <!-- First Half - Movie Info -->
+      <div class="col-md-6">
+          <img id="movie-poster" src="img/assest.png" class="img-fluid" alt="Movie Poster">
+      </div>
+      <div class="col-md-6">
+          <h1 id="movie-title" class="movie-title">Movie Title</h1>
+          <p><strong>Director:</strong> <span id="movie-director">Movie Director</span></p>
+          <p><strong>Language:</strong> <span id="movie-language">Movie Language</span></p>
+          <p><strong>Genre:</strong> <span id="movie-genre">Movie Genre</span></p>
+          <p><strong>Duration:</strong> <span id="movie-duration">Movie Duration</span></p>
+          <p id="movie-description">Movie Description</p>
+      </div>
+  </div>
     <!-- Second Half - Theatres Listing -->
     <div class="theatres mt-5">
         <h2 class="mb-4">Theatres Showing This Movie</h2>
@@ -96,10 +95,6 @@
     </div>
 </div>
 
-
-
-
-
-
 </body>
+<script src="comp-script.js"></script>
 </html>

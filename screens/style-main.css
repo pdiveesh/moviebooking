@@ -1,0 +1,462 @@
+/*responisve design not in bs*/
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* No horizontal scroll */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+/* Small devices (phones, portrait mode) */
+@media (max-width: 480px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 3rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        left: 8rem;
+        margin: 0;
+        padding: 0px; /* Adjust padding as needed */
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+        margin-left: -4rem
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+   
+       
+    
+
+/* footer */
+.ftr{
+    height: 15rem;
+    background-color: #1b0f35;
+    display: flex;
+    margin-top: 2rem;
+    margin-left: 0;
+    font-size: 9px;
+    
+    
+}
+
+.ic{
+    color: rgb(254, 254, 254);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.icn{
+ color: azure;
+margin-left: 0;
+margin-right: 9px;
+}
+.fu-h{
+    color: aliceblue;
+    font-family: 'Trebuchet MS';
+    font-weight: 100;
+    font-size: 9px;
+    padding: 0;
+}
+.scp{
+    height: 1rem;
+    width: 20rem;
+}
+.ftr-img{
+height: 13rem;
+margin-left: 10rem;
+margin-top: 2rem;
+}
+.rts{
+    font-size: 18px;
+    background-color: #1b0f35;
+    color: aliceblue;
+    font-family:'Gill Sans';
+    text-align: center;
+}
+}
+
+/* Popular Movies Section */
+.pm-h {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+    padding: 2rem;
+    text-align: center;
+}
+
+.pm-1 {
+    height: 12rem;
+    margin: 0.5rem;
+    padding-top: 1rem;
+    border: 3px solid #6a6060;
+    border-radius: 5px;
+    padding: 3px;
+    width: 100%;
+    height: 100% ;
+}
+/* footer */
+.ftr{
+    height: 17rem;
+    background-color: #1b0f35;
+    display: flex;
+    
+}
+
+.ic{
+    color: rgb(254, 254, 254);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.icn{
+ color: azure;
+ margin-right: 0.5rem;
+
+}
+.fu-h{
+    color: aliceblue;
+    font-family: 'Trebuchet MS';
+    font-weight: 100;
+    font-size: 20px;
+}
+.scp{
+    height: 2rem;
+    width: 20rem;
+}
+.ftr-img{
+height: 13rem;
+margin-left: 10rem;
+margin-top: 2rem;
+}
+.rts{
+    font-size: 18px;
+    background-color: #1b0f35;
+    color: aliceblue;
+    font-family:'Gill Sans';
+    text-align: center;
+}
+.sm-media{
+    margin-left: 1.5rem;
+}
+.spt{
+    padding-bottom: 2rem;
+}
+
+
+
+
+
+/* Medium devices (tablets, landscape mode) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 6rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        top: 2rem;
+        left: 8rem;
+        margin: 0;
+        padding: 10px; /* Adjust padding as needed */
+        font-size: 1.5rem; /* Adjust font size as needed */
+        text-decoration: none;
+        color: #333;
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+
+    /*carousel*/
+    .carousel {
+        position: relative;
+        width: 100%;
+        height: 35rem;
+        overflow: hidden; /* Hide overflow to prevent showing images outside the container */
+    }
+    
+    .carousel-inner {
+        display: flex;
+        width: 100%; /* Width of the carousel container */
+        overflow: hidden; /* Hide overflow */
+        height: 30rem;
+        margin-top: 2rem;
+        
+    }
+    
+    .carousel-track {
+        display: flex;
+        height: 30rem;
+        width: 200%; /* Twice the width of the carousel container */
+        animation: scroll 30s linear infinite; /* Continuous scrolling */
+    
+    }
+    
+    .carousel-track img {
+        width: 40.5%; /* Adjust this based on the number of images and container width */
+        margin-right: 20px; /* Space between images */
+        flex-shrink: 0; /* Prevent images from shrinking */
+        height: 30rem;
+        margin-top: 2rem;
+        
+    }
+    
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%); /* Scroll by the full width of the carousel-track */
+        }
+    }
+    /*populormovies*/
+.pm-h{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+    padding: 2rem;
+}
+.pm-1{
+    height: 17rem;
+    margin: 3rem;
+    border: 3px solid #6a6060;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+
+/* footer */
+.ftr{
+    height: 15rem;
+    background-color: #1b0f35;
+    display: flex;
+    
+}
+
+.ic{
+    color: rgb(254, 254, 254);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.icn{
+ color: azure;
+ margin-right: 0.5rem;
+
+}
+.fu-h{
+    color: aliceblue;
+    font-family: 'Trebuchet MS';
+    font-weight: 100;
+    font-size: 20px;
+}
+.scp{
+    height: 2rem;
+    width: 20rem;
+}
+.ftr-img{
+height: 13rem;
+margin-left: 10rem;
+margin-top: 2rem;
+}
+.rts{
+    font-size: 18px;
+    background-color: #1b0f35;
+    color: aliceblue;
+    font-family:'Gill Sans';
+    text-align: center;
+}
+.sm-media{
+    margin-left: 2.5rem;
+}
+}
+
+/* Large devices (desktops) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 6rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        top: 2rem;
+        left: 8rem;
+        margin: 0;
+        padding: 10px; /* Adjust padding as needed */
+        font-size: 1.5rem; /* Adjust font size as needed */
+        text-decoration: none;
+        color: #333;
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+
+ 
+    /*populormovies*/
+.pm-h{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+    padding: 2rem;
+}
+.pm-1{
+    height: 17rem;
+    margin: 3rem;
+    border: 3px solid #6a6060;
+    border-radius: 5px;
+    padding: 3px;
+}
+/* footer */
+.ftr{
+    height: 15rem;
+    background-color: #1b0f35;
+    display: flex;
+    
+}
+
+.ic{
+    color: rgb(254, 254, 254);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.icn{
+ color: azure;
+ margin-right: 0.5rem;
+
+}
+.fu-h{
+    color: aliceblue;
+    font-family: 'Trebuchet MS';
+    font-weight: 100;
+    font-size: 20px;
+}
+.scp{
+    height: 2rem;
+    width: 20rem;
+}
+.ftr-img{
+height: 13rem;
+margin-left: 10rem;
+margin-top: 2rem;
+}
+.rts{
+    font-size: 18px;
+    background-color: #1b0f35;
+    color: aliceblue;
+    font-family:'Gill Sans';
+    text-align: center;
+}
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1025px) {
+    .logo-main{
+        border-radius: 50rem;
+        height: 6rem;
+    }
+    .fev{
+        border-radius: 100%;
+    }
+    .navbar-brand {
+        position: absolute;
+        top: 2rem;
+        left: 8rem;
+        margin: 0;
+        padding: 10px; /* Adjust padding as needed */
+        font-size: 1.5rem; /* Adjust font size as needed */
+        text-decoration: none;
+        color: #333;
+    }
+    .form-control::placeholder {
+        font-size: 12px; /* Set the desired font size */
+        color: #888; /* Optional: Change the placeholder text color */
+    }
+    
+
+/*carousel*/
+
+/*populormovies*/
+.pm-h{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+    padding: 2rem;
+}
+.pm-1{
+    height: 17rem;
+    margin: 3rem;
+    border: 3px solid #6a6060;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+/* footer */
+.ftr{
+    height: 15rem;
+    background-color: #1b0f35;
+    display: flex;
+    
+}
+
+.ic{
+    color: rgb(254, 254, 254);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.icn{
+ color: azure;
+ margin-right: 0.7rem;
+
+}
+.fu-h{
+    color: aliceblue;
+    font-family: 'Trebuchet MS';
+    font-weight: 100;
+    font-size: 20px;
+}
+.scp{
+    height: 2rem;
+    width: 20rem;
+}
+.ftr-img{
+height: 13rem;
+margin-right: 1rem;
+margin-top: 2rem;
+}
+.rts{
+    font-size: 18px;
+    background-color: #1b0f35;
+    color: aliceblue;
+    font-family:'Gill Sans';
+    text-align: center;
+}
+
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pop-mov {
+    margin-bottom: 20px;
+}
+
+.pm-1 {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.pm-h {
+    text-align: center;
+    margin-bottom: 20px;
+}

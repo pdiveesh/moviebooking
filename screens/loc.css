@@ -214,3 +214,35 @@ html, body {
         margin-top:10rem;
         }
 }
+
+/* loc.css */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Adjust as needed */
+    font-size: 4rem; /* Adjust icon size as needed */
+    background-color: #f8f9fa; /* Background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: shadow for depth */
+    margin-bottom: 1rem; /* Space below the box */
+}
+
+.icon-container i {
+    color: #333; /* Icon color */
+}
+
+.city-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.city-name {
+    margin-top: 1rem;
+    font-size: 1.25rem; /* Adjust font size as needed */
+    font-weight: bold;
+}

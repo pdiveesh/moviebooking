@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", fetchMovies);
+document.addEventListener("DOMContentLoaded", () => {
+    fetchMovies(); // Fetch movies when the page loads
+    fetchCities(); // Fetch the cities when the page loads
+});
 
 function fetchMovies() {
     fetch("http://localhost:8080/api/movies")
@@ -24,8 +27,50 @@ function fetchMovies() {
         .catch(error => console.error("Error fetching movies:", error));
 }
 
+function fetchCities() {
+    fetch("http://localhost:8080/api/cities")
+        .then(response => response.json())
+        .then(data => {
+            const citySelect = document.getElementById("city");
+            citySelect.innerHTML = '<option value="">Select City</option>';
+            data.forEach(city => {
+                const option = document.createElement("option");
+                option.value = city.name;
+                option.textContent = city.name;
+                citySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error("Error fetching cities:", error));
+}
+
+function fetchTheatresByCity() {
+    const cityName = document.getElementById("city").value;
+    if (!cityName) {
+        document.getElementById("theatre-container").innerHTML = '<label>Theatres:</label>';
+        return;
+    }
+    
+    fetch(`http://localhost:8080/api/theatres/city/${encodeURIComponent(cityName)}`)
+        .then(response => response.json())
+        .then(data => {
+            const theatreContainer = document.getElementById("theatre-container");
+            theatreContainer.innerHTML = '<label>Theatres:</label>'; // Reset container content
+            data.forEach(theatre => {
+                const label = document.createElement("label");
+                label.innerHTML = `
+                    <input type="checkbox" value="${theatre.id}" />
+                    ${theatre.name}
+                `;
+                theatreContainer.appendChild(label);
+            });
+        })
+        .catch(error => console.error("Error fetching theatres:", error));
+}
+
 function addOrUpdateMovie() {
     const id = document.getElementById("movie-id").value;
+    const selectedTheatres = Array.from(document.querySelectorAll("#theatre-container input[type='checkbox']:checked"))
+                                  .map(checkbox => checkbox.value);
     const movie = {
         title: document.getElementById("title").value,
         image: document.getElementById("image").value,
@@ -36,7 +81,9 @@ function addOrUpdateMovie() {
         description: document.getElementById("description").value,
         duration: document.getElementById("duration").value,
         startDate: document.getElementById("start-date").value,
-        endDate: document.getElementById("end-date").value
+        endDate: document.getElementById("end-date").value,
+        cityName: document.getElementById("city").value,
+        theatreIds: selectedTheatres // Correct field name for theatre IDs
     };
 
     const method = id ? "PUT" : "POST";
@@ -51,10 +98,9 @@ function addOrUpdateMovie() {
     })
     .then(response => response.json())
     .then(() => {
-        // Clear the form fields and fetch the updated list of movies
         document.getElementById("movie-form").reset();
         document.getElementById("movie-id").value = "";
-        fetchMovies(); // Call to update the table
+        fetchMovies();
     })
     .catch(error => console.error("Error adding/updating movie:", error));
 }
@@ -74,6 +120,14 @@ function editMovie(id) {
             document.getElementById("duration").value = movie.duration;
             document.getElementById("start-date").value = movie.startDate;
             document.getElementById("end-date").value = movie.endDate;
+            document.getElementById("city").value = movie.cityName;
+            fetchTheatresByCity(); // Fetch theatres based on selected city
+
+            // Ensure checkboxes are pre-selected based on movie.theatreIds
+            const theatreCheckboxes = document.querySelectorAll("#theatre-container input[type='checkbox']");
+            theatreCheckboxes.forEach(checkbox => {
+                checkbox.checked = movie.theatreIds.includes(checkbox.value);
+            });
         })
         .catch(error => console.error("Error fetching movie:", error));
 }
@@ -82,6 +136,6 @@ function deleteMovie(id) {
     fetch(`http://localhost:8080/api/movies/${id}`, {
         method: "DELETE"
     })
-    .then(() => fetchMovies()) // Call to update the table after deletion
+    .then(() => fetchMovies())
     .catch(error => console.error("Error deleting movie:", error));
 }

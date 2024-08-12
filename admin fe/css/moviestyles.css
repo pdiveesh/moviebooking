@@ -1,25 +1,29 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #000; /* Black background for a premium feel */
+    color: #f9f9f9; /* Light text color for contrast */
 }
 
+/* Container Styles */
 .container {
     display: flex;
 }
 
 /* Sidebar Styles */
 .sidebar {
-    width: 200px;
-    background-color: #333;
-    color: white;
+    width: 250px; /* Slightly wider for a more premium look */
+    background-color: #222; /* Darker shade for sidebar */
+    color: #f9f9f9;
     height: 100vh;
     padding: 20px;
 }
 
 .sidebar h2 {
     text-align: center;
+    color: #f9f9f9; /* White color for heading */
 }
 
 .sidebar ul {
@@ -32,42 +36,54 @@ body {
 }
 
 .sidebar ul li a {
-    color: white;
+    color: #f9f9f9;
     text-decoration: none;
     display: block;
     padding: 10px;
+    background-color: #333; /* Dark background for links */
+    border-radius: 4px;
 }
 
 .sidebar ul li a:hover {
-    background-color: #575757;
+    background-color: #555; /* Slightly lighter on hover */
 }
 
 /* Main Content Styles */
 .main-content {
     flex-grow: 1;
     padding: 20px;
+    background-color: #111; /* Dark background for content */
+    border-left: 1px solid #444; /* Border to separate sidebar and content */
 }
 
 h1 {
     text-align: center;
+    color: #f9f9f9; /* White color for heading */
 }
 
+/* Movie Form Styles */
 #movie-form {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 #movie-form label {
     margin: 10px 0 5px;
+    color: #f9f9f9; /* White color for labels */
 }
 
-#movie-form input, #movie-form textarea, #movie-form button {
+#movie-form input,
+#movie-form textarea,
+#movie-form button,
+#movie-form select {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #f9f9f9; /* White border for form elements */
     border-radius: 4px;
+    background-color: #222; /* Dark background for form elements */
+    color: #f9f9f9; /* White text color for form elements */
 }
 
 #movie-form textarea {
@@ -75,14 +91,39 @@ h1 {
 }
 
 #movie-form button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #f9f9f9; /* Yellow buttons */
+    color: #111; /* Dark text for buttons */
     border: none;
     cursor: pointer;
+    font-weight: bold;
 }
 
 #movie-form button:hover {
-    background-color: #45a049;
+    background-color: #ffeb3b; /* Brighter yellow on hover */
+}
+
+/* Dropdown Styles */
+#city {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #222; /* Dark background for dropdown */
+    border: 1px solid #f9f9f9; /* White border for dropdown */
+    color: #f9f9f9; /* White text color */
+}
+
+/* Theatre Selection Styles */
+.theatre-selection {
+    display: flex;
+    flex-direction: column;
+}
+
+.theatre-selection label {
+    margin-bottom: 5px;
+    color: #f9f9f9; /* White color for labels */
+}
+
+.theatre-selection input[type="checkbox"] {
+    margin-right: 10px;
 }
 
 /* Table Styles */
@@ -93,7 +134,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #444; /* Dark border for table */
 }
 
 table th, table td {
@@ -102,16 +143,17 @@ table th, table td {
 }
 
 table th {
-    background-color: #f2f2f2;
+    background-color: #333; /* Dark background for table headers */
+    color: #f9f9f9; /* White text color for headers */
 }
 
 table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #555; /* Lighter background on hover */
 }
 
 table button {
-    background-color: #f44336;
-    color: white;
+    background-color: #f9f9f9; /* Yellow buttons in table */
+    color: #111; /* Dark text for buttons */
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
@@ -119,5 +161,5 @@ table button {
 }
 
 table button:hover {
-    background-color: #d32f2f;
+    background-color: #ffeb3b; /* Brighter yellow on hover */
 }

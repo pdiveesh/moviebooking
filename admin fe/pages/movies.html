@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Movies</title>
     <link rel="stylesheet" href="../css/moviestyles.css">
+    <style>
+        .theatre-selection {
+            display: flex;
+            flex-direction: column;
+        }
+        .theatre-selection label {
+            margin-bottom: 5px;
+        }
+        .theatre-selection input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -43,8 +55,21 @@
                 <input type="date" id="start-date" />
                 <label for="end-date">End Date:</label>
                 <input type="date" id="end-date" />
+                
+                <!-- New Fields for City and Theatre Selection -->
+                <label for="city">City:</label>
+                <select id="city" onchange="fetchTheatresByCity()">
+                    <option value="">Select City</option>
+                </select>
+                
+                <div id="theatre-container" class="theatre-selection">
+                    <label>Theatres:</label>
+                    <!-- Checkboxes will be dynamically added here -->
+                </div>
+                
                 <button onclick="addOrUpdateMovie()">Save</button>
             </div>
+            
             <table>
                 <thead>
                     <tr>

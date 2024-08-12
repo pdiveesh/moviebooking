@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/cities.css"> <!-- Link to your external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul class="list-unstyled">
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="theatres.html">Theatres</a></li>
+                <li><a href="showtimes.html">Showtimes</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <!-- Your existing HTML content for city management -->
+            <h1>City Management</h1>
+            <form id="addCityForm">
+                <div class="form-group">
+                    <label for="cityName">City Name</label>
+                    <input type="text" class="form-control" id="cityName" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add City</button>
+            </form>
+            <ul id="cityList" class="list-group mt-3"></ul>
+        </div>
+    </div>
+
+    <script src="../js/cities.js"></script> <!-- Link to your existing JS file -->
+</body>
+</html>
+

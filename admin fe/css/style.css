@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,9 +8,10 @@ body {
     min-height: 100vh;
 }
 
+/* Navigation Styles */
 nav {
     width: 200px;
-    background-color: #333;
+    background-color: #000; /* Black background for nav */
     color: #fff;
     padding: 10px 0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -29,18 +31,20 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #f4c542; /* Yellow color for nav links */
     text-decoration: none;
     display: block;
     padding: 10px;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav ul li a:hover {
-    background-color: #555;
+    background-color: #555; /* Darker background on hover */
+    color: #fff; /* White text color on hover */
 }
 
+/* Content Styles */
 #content {
     flex-grow: 1;
     padding: 20px;
@@ -55,6 +59,7 @@ h1 {
     color: #333;
 }
 
+/* Form Styles */
 form {
     background-color: #fff;
     padding: 20px;
@@ -86,18 +91,20 @@ form textarea::placeholder {
 }
 
 form button {
-    background-color: #333;
-    color: #fff;
+    background-color: #f4c542; /* Yellow button background */
+    color: #000; /* Black text color */
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 form button:hover {
-    background-color: #555;
+    background-color: #e0b943; /* Slightly darker yellow on hover */
 }
 
+/* Movie List Styles */
 #movieList {
     margin-top: 20px;
     width: 100%;

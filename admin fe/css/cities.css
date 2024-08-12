@@ -1,0 +1,179 @@
+/* Reset margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevents scrollbar from showing if there's extra content */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    background-color: #000; /* Black background */
+    color: #f4c542; /* Yellow text */
+    padding: 20px;
+    border-right: 1px solid #f4c542; /* Yellow border */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.sidebar h2 {
+    color: #f4c542; /* Yellow headings */
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #f4c542; /* Yellow link */
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #555; /* Dark background on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Header Styles */
+h1 {
+    color: #333;
+}
+
+/* Form Styles */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: #999;
+    padding-left: 5px; /* Optional: Add extra padding to the left for more space */
+}
+
+form button {
+    background-color: #f4c542; /* Yellow button */
+    color: #000; /* Black text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #e0a81c; /* Darker yellow on hover */
+}
+
+/* Dropdown Styles */
+form select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px; /* Adjust font size if needed */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4c542; /* Yellow header background */
+    color: #000; /* Black text */
+}
+
+table tr:hover {
+    background-color: #f4f4f4; /* Light gray background on hover */
+}
+
+table button {
+    background-color: #f4c542; /* Yellow button */
+    color: #000; /* Black text */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+table button:hover {
+    background-color: #e0a81c; /* Darker yellow on hover */
+}
+
+/* List Group Item Styles */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4; /* Light gray background */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.list-group-item:hover {
+    background-color: #f4c542; /* Yellow background on hover */
+    border-color: #f4c542; /* Yellow border on hover */
+    color: #000; /* Black text on hover */
+}

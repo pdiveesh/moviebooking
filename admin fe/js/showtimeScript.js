@@ -1,95 +1,93 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('showtime-form');
-    const tableBody = document.querySelector('#showtime-table tbody');
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("showtime-form");
+    const showtimeTable = document.getElementById("showtime-table").querySelector("tbody");
+    const apiUrl = "http://localhost:8080/api/showtimes/all"; // Updated endpoint
 
-    // Fetch showtimes and populate the table
-    async function fetchShowtimes() {
-        try {
-            const response = await fetch('http://localhost:8080/api/showtimes');
-            if (!response.ok) throw new Error('Network response was not ok');
-            const showtimes = await response.json();
-            populateTable(showtimes);
-        } catch (error) {
-            console.error('Error fetching showtimes:', error);
-        }
-    }
+    // Fetch and display existing showtimes
+    fetchShowtimes();
 
-    function populateTable(showtimes) {
-        tableBody.innerHTML = ''; // Clear existing rows
-        showtimes.forEach(showtime => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${showtime.id}</td>
-                <td>${showtime.ticketPrice}</td>
-                <td>${showtime.startDate}</td>
-                <td>${showtime.endDate}</td>
-                <td>${showtime.movieId}</td>
-                <td>${showtime.theatreId}</td>
-                <td>
-                    <button onclick="editShowtime('${showtime.id}')">Edit</button>
-                    <button onclick="deleteShowtime('${showtime.id}')">Delete</button>
-                </td>
-            `;
-            tableBody.appendChild(row);
-        });
-    }
-
-    // Add or update showtime
-    form.addEventListener('submit', async (event) => {
+    form.addEventListener("submit", (event) => {
         event.preventDefault();
-        const id = document.getElementById('showtime-id').value;
-        const ticketPrice = document.getElementById('ticketPrice').value;
-        const startDate = document.getElementById('startDate').value;
-        const endDate = document.getElementById('endDate').value;
-        const movieId = document.getElementById('movieId').value;
-        const theatreId = document.getElementById('theatreId').value;
 
-        try {
-            const method = id ? 'PUT' : 'POST';
-            const url = id ? `http://localhost:8080/api/showtimes/${id}` : 'http://localhost:8080/api/showtimes';
-            const response = await fetch(url, {
-                method: method,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ ticketPrice, startDate, endDate, movieId, theatreId })
-            });
+        const showtimeData = {
+            ticketPrice: parseFloat(document.getElementById("ticketPrice").value),
+            startDate: document.getElementById("startDate").value,
+            endDate: document.getElementById("endDate").value,
+            movieId: document.getElementById("movieId").value,
+            theatreId: document.getElementById("theatreId").value,
+            times: document.getElementById("showtimes").value.split(',').map(time => time.trim())
+        };
 
-            if (!response.ok) throw new Error('Network response was not ok');
-
-            await fetchShowtimes(); // Refresh the table
+        // Post the new showtime
+        fetch(apiUrl.replace("/all", ""), { // Adjust URL to post without `/all`
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(showtimeData)
+        })
+        .then(response => response.json())
+        .then(() => {
+            // Clear the form and refresh the table
             form.reset();
-        } catch (error) {
-            console.error('Error saving showtime:', error);
-        }
+            fetchShowtimes();
+        })
+        .catch(error => console.error("Error:", error));
     });
 
-    // Edit showtime
-    window.editShowtime = (id) => {
-        fetch(`http://localhost:8080/api/showtimes/${id}`)
-            .then(response => response.json())
-            .then(showtime => {
-                document.getElementById('showtime-id').value = showtime.id;
-                document.getElementById('ticketPrice').value = showtime.ticketPrice;
-                document.getElementById('startDate').value = showtime.startDate;
-                document.getElementById('endDate').value = showtime.endDate;
-                document.getElementById('movieId').value = showtime.movieId;
-                document.getElementById('theatreId').value = showtime.theatreId;
+    // Fetch showtimes from the server and populate the table
+    function fetchShowtimes() {
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
             })
-            .catch(error => console.error('Error fetching showtime:', error));
-    };
-
-    // Delete showtime
-    window.deleteShowtime = (id) => {
-        fetch(`http://localhost:8080/api/showtimes/${id}`, {
-            method: 'DELETE'
+            .then(showtimes => {
+                showtimeTable.innerHTML = ""; // Clear existing rows
+                showtimes.forEach(showtime => {
+                    const row = document.createElement("tr");
+    
+                    // Format the dates
+                    const startDate = new Date(showtime.startDate).toLocaleDateString();
+                    const endDate = new Date(showtime.endDate).toLocaleDateString();
+    
+                    row.innerHTML = `
+                        <td>${showtime.id}</td>
+                        <td>${showtime.ticketPrice}</td>
+                        <td>${startDate}</td>
+                        <td>${endDate}</td>
+                        <td>${showtime.movieId}</td>
+                        <td>${showtime.theatreId}</td>
+                        <td>${showtime.times.join(', ')}</td>
+                        <td>
+                            <button class="delete-btn" data-id="${showtime.id}">Delete</button>
+                        </td>
+                    `;
+    
+                    showtimeTable.appendChild(row);
+                });
+    
+                // Add delete functionality to each delete button
+                document.querySelectorAll(".delete-btn").forEach(button => {
+                    button.addEventListener("click", (event) => {
+                        const id = event.target.getAttribute("data-id");
+                        deleteShowtime(id);
+                    });
+                });
+            })
+            .catch(error => console.error("Error:", error));
+    }
+    
+    // Delete a showtime by ID
+    function deleteShowtime(id) {
+        fetch(`${apiUrl.replace("/all", "")}/${id}`, {
+            method: "DELETE"
         })
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return fetchShowtimes(); // Refresh the table
+        .then(() => {
+            fetchShowtimes();
         })
-        .catch(error => console.error('Error deleting showtime:', error));
-    };
-
-    fetchShowtimes(); // Initial load
+        .catch(error => console.error("Error:", error));
+    }
 });

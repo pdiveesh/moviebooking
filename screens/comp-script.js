@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 <h5 class="card-title">${theatre.name || 'No Name'}</h5>
                                                 <p class="card-text">Ticket Price: $${theatre.ticketPrice || 'N/A'}</p>
                                                 <p class="card-text">Seats: ${theatre.seats || 'N/A'}</p>
-                                                <a href="#" class="btn btn-primary">Book Now</a>
+                                                <a href="./ticket.html?movieId=${movieId}&theatreId=${theatre.id}" class="btn btn-primary">Book Now</a>
                                             </div>
                                         </div>
                                     </div>

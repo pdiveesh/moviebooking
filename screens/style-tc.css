@@ -1,0 +1,49 @@
+/* General Container */
+.container-fluid {
+    padding: 0;
+}
+
+/* Movie Image */
+.theatre-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Date Buttons */
+.show-dates {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.date-button {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.date-button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Show Times */
+.show-timings {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.show-time-box {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.show-time-box:hover {
+    background-color: #007bff;
+    color: white;
+}

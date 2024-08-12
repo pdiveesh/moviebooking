@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <link rel="icon" href="../LOGOS/IYT.svg" type="image/svg+xml">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style-tc.css">
+    <style>
+        .date-button {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f8f9fa;
+        }
+
+        .date-button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .show-time-box {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .show-time-box:hover {
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row theatre-page">
+            <!-- Left Side: Image -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center p-0">
+                <img id="theatre-image" src="../POSTERS/HEROBG.png" alt="Theatre" class="img-fluid theatre-image">
+            </div>
+
+            <!-- Right Side: Theatre Information -->
+            <div class="col-md-6 p-5 theatre-info">
+                <h1 id="theatre-name" class="theatre-name">Theatre Name</h1>
+                <div class="show-dates" id="show-dates">
+                    <!-- Date buttons will be inserted here -->
+                </div>
+                <div class="show-timings" id="show-timings">
+                    <!-- Showtimes will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script-tc.js"></script>
+</body>
+</html>

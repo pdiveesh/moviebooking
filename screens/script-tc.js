@@ -32,7 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(movie => {
-            document.querySelector('.theatre-image').src = movie.image || '../POSTERS/default-movie.jpg';
+            const imageElement = document.querySelector('.theatre-image');
+            if (imageElement) {
+                imageElement.src = movie.image || '../POSTERS/default-movie.jpg';
+            } else {
+                console.error('Image element not found');
+            }
         })
         .catch(error => console.error('Error fetching movie data:', error));
 
@@ -46,13 +51,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(theatre => {
             const nameElement = document.querySelector('.theatre-name');
             const addressElement = document.querySelector('.theatre-address');
-            
             if (nameElement) {
                 nameElement.textContent = theatre.name || 'No Name';
             } else {
                 console.error('Theatre name element not found');
             }
-
             if (addressElement) {
                 addressElement.textContent = theatre.address || 'No Address';
             } else {
@@ -69,23 +72,28 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(showtimes => {
+            if (showtimes.length === 0) {
+                console.error('No showtimes available');
+                return;
+            }
+
+            const startDate = showtimes[0].startDate;
+            const endDate = showtimes[0].endDate;
+            const times = showtimes[0].times;
+
+            // Extract all dates within the period
+            const dates = new Set();
+            const currentDate = new Date(startDate);
+            const end = new Date(endDate);
+
+            while (currentDate <= end) {
+                const formattedDate = formatDate(currentDate.toISOString().split('T')[0]);
+                dates.add(formattedDate); // Format as DD-MM-YYYY
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
             const datesContainer = document.querySelector('.show-dates');
             const timingsContainer = document.querySelector('.show-timings');
-            const dates = new Set();
-            const showtimesByDate = {};
-
-            showtimes.forEach(showtime => {
-                const startDate = new Date(showtime.startDate);
-                const endDate = new Date(showtime.endDate);
-
-                for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
-                    const formattedDate = formatDate(d);
-                    if (!dates.has(formattedDate)) {
-                        dates.add(formattedDate);
-                        showtimesByDate[formattedDate] = showtimes.filter(st => formatDate(new Date(st.startDate)) === formattedDate);
-                    }
-                }
-            });
 
             datesContainer.innerHTML = '';
             dates.forEach(date => {
@@ -100,23 +108,21 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.date-button').forEach(button => {
                 button.addEventListener('click', function () {
                     const date = this.dataset.date;
-                    const showtimesForDate = showtimesByDate[date] || [];
 
                     timingsContainer.innerHTML = '';
-                    if (showtimesForDate.length > 0) {
-                        showtimesForDate.forEach(showtime => {
-                            showtime.times.forEach(time => {
-                                const timeBox = `
-                                    <div class="show-time-box">
-                                        <p class="show-time">${time}</p>
-                                    </div>
-                                `;
-                                timingsContainer.insertAdjacentHTML('beforeend', timeBox);
-                            });
-                        });
-                    } else {
-                        timingsContainer.innerHTML = '<p>No showtimes available</p>';
+                    if (!times || times.length === 0) {
+                        timingsContainer.innerHTML = '<p>No showtimes available for this date.</p>';
+                        return;
                     }
+
+                    times.forEach(time => {
+                        const timeBox = `
+                            <div class="show-time-box">
+                                <p class="show-time">${time}</p>
+                            </div>
+                        `;
+                        timingsContainer.insertAdjacentHTML('beforeend', timeBox);
+                    });
                 });
             });
         })

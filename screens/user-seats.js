@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    // URL for fetching seat availability
     const seatApiUrl = `http://localhost:8080/api/seats/by-movie-theatre?movieId=${movieId}&theatreId=${theatreId}`;
 
+    // Fetch and display seats
     fetch(seatApiUrl)
         .then(response => {
             if (!response.ok) {
@@ -27,10 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const seatContainer = document.getElementById('seat-container');
             seatContainer.innerHTML = ''; // Clear existing seats
 
-            // Assume `seatNumber` in response data is the total number of seats
             const totalSeats = parseInt(seats[0].seatNumber, 10);
 
-            // Constraints
             const maxRows = 26;
             const rowLengths = [15, 10, 5]; // Example row lengths; adjust as needed
 
@@ -42,17 +42,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 const rowDiv = document.createElement('div');
                 rowDiv.className = 'row';
 
-                const seatsInRow = rowLengths[currentRow % rowLengths.length]; // Use pattern for varying row lengths
+                const seatsInRow = rowLengths[currentRow % rowLengths.length];
 
                 for (let col = 0; col < seatsInRow && seatIndex < totalSeats; col++) {
-                    const seatId = `${String.fromCharCode(65 + currentRow)}${col + 1}`; // 'A1', 'A2', ..., 'Z100'
+                    const seatId = `${String.fromCharCode(65 + currentRow)}${col + 1}`;
 
                     const seatElement = document.createElement('div');
-                    seatElement.className = `seat available`; // Default to available
+                    seatElement.className = `seat available`;
                     seatElement.dataset.seatId = seatId;
                     seatElement.textContent = seatId;
 
-                    // Add click event to select a seat
+                    // Mark seats as booked if they are already taken
+                    if (seats.includes(seatId)) {
+                        seatElement.classList.remove('available');
+                        seatElement.classList.add('booked');
+                    }
+
                     seatElement.addEventListener('click', function () {
                         if (seatElement.classList.contains('available')) {
                             seatElement.classList.toggle('selected');
@@ -69,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching seat data:', error));
 
+    // Handle seat booking
     document.querySelector('.user-panel button').addEventListener('click', function () {
         const selectedSeats = document.querySelectorAll('.seat.selected');
         const bookingStatus = document.getElementById('booking-status');
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(bookingDetails)
+            body: JSON.stringify(bookingDetails) // Ensure bookingDetails is correctly formatted
         })
         .then(response => {
             if (response.ok) {
@@ -102,11 +108,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     seat.classList.remove('available');
                 });
                 bookingStatus.textContent = 'Seats booked successfully!';
+                
+                const params = new URLSearchParams({
+                    movieId: movieId,
+                    theatreId: theatreId,
+                    date: date,
+                    time: time,
+                    seats: seatIds.join(',')
+                });
+                window.location.href = `./bookingtickets.html?${params.toString()}`;
             } else {
                 console.error('Error booking seats:', response.statusText);
                 bookingStatus.textContent = 'Error booking seats.';
             }
         })
-        .catch(error => console.error('Error booking seats:', error));
+        .catch(error => {
+            console.error('Error booking seats:', error);
+            bookingStatus.textContent = 'Error booking seats.';
+        });
+        
     });
 });

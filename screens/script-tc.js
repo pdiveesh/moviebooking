@@ -117,11 +117,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     times.forEach(time => {
                         const timeBox = `
-                            <div class="show-time-box">
+                            <div class="show-time-box" data-date="${date}" data-time="${time}">
                                 <p class="show-time">${time}</p>
                             </div>
                         `;
                         timingsContainer.insertAdjacentHTML('beforeend', timeBox);
+                    });
+
+                    document.querySelectorAll('.show-time-box').forEach(box => {
+                        box.addEventListener('click', function () {
+                            const selectedDate = this.dataset.date;
+                            const selectedTime = this.dataset.time;
+
+                            // Redirect to user-seat.html with necessary parameters
+                            window.location.href = `./user-seats.html?movieId=${movieId}&theatreId=${theatreId}&date=${selectedDate}&time=${selectedTime}`;
+                        });
                     });
                 });
             });

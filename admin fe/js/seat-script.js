@@ -17,7 +17,7 @@ document.getElementById('seatForm').addEventListener('submit', function(e) {
         status: 'available' // default status
     };
 
-    fetch('http://localhost:8080/api/admin/seats', {
+    fetch('http://localhost:8080/api/seats', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ document.getElementById('seatForm').addEventListener('submit', function(e) {
 });
 
 function loadSeats() {
-    fetch('http://localhost:8080/api/admin/seats')
+    fetch('http://localhost:8080/api/seats')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -69,7 +69,7 @@ function loadSeats() {
 function updateSeat(seatId) {
     const newPrice = document.getElementById(`price-${seatId}`).value;
 
-    fetch(`http://localhost:8080/api/admin/seats/update/${seatId}?seatNumber=${encodeURIComponent(seatNumber)}&newPrice=${encodeURIComponent(newPrice)}`, {
+    fetch(`http://localhost:8080/api/seats/update/${seatId}?seatNumber=${encodeURIComponent(seatNumber)}&newPrice=${encodeURIComponent(newPrice)}`, {
         method: 'PUT'
     })
     .then(response => response.json())
@@ -81,7 +81,7 @@ function updateSeat(seatId) {
 }
 
 function deleteSeat(seatId) {
-    fetch(`http://localhost:8080/api/admin/seats/delete/${seatId}`, {
+    fetch(`http://localhost:8080/api/seats/delete/${seatId}`, {
         method: 'DELETE',
     })
     .then(() => loadSeats())
